@@ -26,21 +26,19 @@
 
    April 17 - learn how to write some simple test cases, and be able to pass these test cases. 
 
-   April 19 - express data with graph in data structure
+   April 19 - start to implement BFS to iterate through all the data 
 
-   April 20 - write test cases for graph and pass them
+   April 21 - write test cases for BFS traversal and pass them
 
-   April 22 - implements BFS to iterate through all the data 
-
-   April 23 - find the shortest path by using Dijkstra's algorithm
+   April 22/23 - finish BFS traversal and meet with project mentor
    
-   April 27 - write Dijikstra's and verify with tests
+   April 24 - write Dijikstra's algorithm and verify with test cases
 
-   May 2 - wrtie page rank and verify with tests
+   April 29 - wrtie page rank and verify with tests
 
    May 6 - finish page rank
    
-   May 7 - be able to run through the whole program
+   May 7 - be able to run through the whole program and start to write final project report
    
    May 9 - record final presentation
    
