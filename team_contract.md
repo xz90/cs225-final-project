@@ -2,7 +2,7 @@
 ## Team Contract (baoyul2-sxxiao2-zikuiw2-xz90) 
 
 ### Communication 
-1. **Team Meetings** Our team will meet once a week every Friday (TBD) using Zoom. Each meeting may last approximately 2 hours to discuss the project progress, problems and improvement. Each member will rotate being the designated note-taker, starting with baoyul2, then sxxiao2, zikuiw2, and xz90. The note will be stored in Google Words. And we will also record our meeting and store the videos in a shared document. 
+1. **Team Meetings** Our team will meet once a week every Friday 7-9 p.m. using Zoom. Each meeting may last approximately 2 hours to discuss the project progress, problems and improvement. Each member will rotate being the designated note-taker, starting with baoyul2, then sxxiao2, zikuiw2, and xz90. The note will be stored in Google Words. And we will also record our meeting and store the videos in a shared document. 
 
 2. **Assistance** Each team member could contact each other using email, WeChat. Outside of emergencies or other special circumstances, we commit to respond within 24 hours.
  
@@ -20,4 +20,4 @@
 If this was an MD file, each of us would sign our names here at the bottom with an electronic signature and a separate github commit over the same document. 
 
 ### Signatures
-I, Name (netID) agree to the terms of this contract.
+I, Zikui Wang (zikuiw2) agree to the terms of this contract.
