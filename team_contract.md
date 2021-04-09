@@ -1,8 +1,8 @@
 # CS 225 Data Structures 
-## Team Contract (baoyul2-sxxiao2-zikuiw2-xz9) 
+## Team Contract (baoyul2-sxxiao2-zikuiw2-xz90) 
 
 ### Communication 
-1. **Team Meetings** Our team will meet once a week every Friday (TBD) using Zoom. Each meeting may last approximately 2 hours to discuss the project progress, problems and improvement. Each member will rotate being the designated note-taker, starting with baoyul2, then sxxiao2, zikuiw2, and xz9. The note will be stored in Google Words. And we will also record our meeting and store the videos in a shared document. 
+1. **Team Meetings** Our team will meet once a week every Friday (TBD) using Zoom. Each meeting may last approximately 2 hours to discuss the project progress, problems and improvement. Each member will rotate being the designated note-taker, starting with baoyul2, then sxxiao2, zikuiw2, and xz90. The note will be stored in Google Words. And we will also record our meeting and store the videos in a shared document. 
 
 2. **Assistance** Each team member could contact each other using email, WeChat. Outside of emergencies or other special circumstances, we commit to respond within 24 hours.
  
