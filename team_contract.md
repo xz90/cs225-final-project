@@ -21,5 +21,6 @@ If this was an MD file, each of us would sign our names here at the bottom with 
 
 ### Signatures
 I, Zikui Wang (zikuiw2) agree to the terms of this contract.
-I, Xingjian Zhang (xz90) agree to the terms of this contract.
-I, Sophia Xiao(sxxiao2) agree to the terms of this contract.
+II, Xingjian Zhang (xz90) agree to the terms of this contract.
+III, Sophia Xiao(sxxiao2) agree to the terms of this contract.
+IV, Baoyu Li (baoyul2) agree to the terms of this contract. 
