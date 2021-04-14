@@ -2,6 +2,7 @@
 EXENAME = finalproj
 
 # Object Types
+# Need to add file.o
 OBJS = readFromFile.o main.o
 
 # Compilation Flags
@@ -23,6 +24,7 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME): output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
+# Need to add file.cpp
 readFromFile.o: main.cpp readFromFile.cpp
 	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp
 

@@ -1,5 +1,7 @@
 #include <string>
 
+using namespace std;
+
 // adapted from CS 225 Final Project AMA
 
 /** 
@@ -15,3 +17,5 @@ std::string file_to_string(const std::string & filename);
  * @return a vector containing filename's contents
  */
 std::vector<std::string> file_to_vector(const std::string & filename);
+
+void filter_blank_spaces(ifstream & in_stream, ofstream & out_stream);
