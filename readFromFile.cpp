@@ -26,32 +26,20 @@ std::vector<std::string> file_to_vector(const std::string & filename) {
 	if (text.is_open()) {
 		// stream: continuous
 		std::istream_iterator<std::string> iter(text);
-
-		while (!text.eof()) {
+    	string      line; //保存读入的每一行
+    	while(getline(text,line))//会自动把\n换行符去掉 
+    	{
+        	out.push_back(line);  
+    	}
+		/*while (!text.eof()) {
 			out.push_back(*iter);
 			++iter;
-		}
+		}*/
 	}
 
 	return out;
 } 
 
-void filter_blank_spaces(ifstream & in_stream, ofstream & out_stream) {
-	char next;
-	in_stream.get(next);
-
-	do
-	{
-		if (isspace(next)) {
-			out_stream << ' ';
-		} else {
-			out_stream << next;
-		}
-		in_stream.get(next);
-	} while (! in_stream.get(next));
-	
-	
-}
 
 
 
