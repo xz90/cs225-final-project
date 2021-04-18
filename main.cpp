@@ -22,7 +22,7 @@ int main(int argc, const char * argv[]) {
 	std::cout << argc << std::endl;
 }
 */
-
+std::vector<std::string> line_split(std::vector<std::string> vec, int position);
 int main() {
 	std::cout << "Filename: " << "airports.dat.txt" << std::endl;
 	
@@ -36,16 +36,29 @@ int main() {
 	std::cout << "Vector Representation:" << std::endl;
 	std::vector<std::string> vectorRepr = file_to_vector("airports.dat.txt");
 	
+
+	
+	std::vector<std::string> out;
+	out = line_split(vectorRepr, 3);
+	/*for (auto word : out) {
+		std::cout << word << std::endl;
+	}*/
+	/*
+	// The same as above
+	for (std::vector<std::string>::iterator it = vectorRepr.begin(); it != vectorRepr.end(); ++it) {
+		std::cout << *it << std::endl;
+	}*/
+	/*std::cout << out[0] << std::endl;
+	std::cout << out[1] << std::endl;
+	std::cout << out[2] << std::endl;
+	std::cout << out[3] << std::endl;
+	std::cout << out[4] << std::endl;*/
+	for (int i = 0; i < 629; ++i) {
+		std::cout << out[i] << std::endl;
+	}
 	/*std::cout << vectorRepr[0] << std::endl;
 	std::cout << vectorRepr[1] << std::endl;
 	std::cout << vectorRepr[2] << std::endl;
 	std::cout << vectorRepr[3] << std::endl;
 	std::cout << vectorRepr[4] << std::endl;*/
-	
-	for (auto word : vectorRepr) {
-		std::cout << word << std::endl;
-	}
-	
-
-
 }
