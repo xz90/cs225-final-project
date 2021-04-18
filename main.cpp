@@ -43,7 +43,9 @@ int main() {
 	/*for (auto word : out) {
 		std::cout << word << std::endl;
 	}*/
-	/*for (std::vector<std::string>::iterator it = vectorRepr.begin(); it != vectorRepr.end(); ++it) {
+	/*
+	// The same as above
+	for (std::vector<std::string>::iterator it = vectorRepr.begin(); it != vectorRepr.end(); ++it) {
 		std::cout << *it << std::endl;
 	}*/
 	/*std::cout << out[0] << std::endl;
@@ -51,9 +53,9 @@ int main() {
 	std::cout << out[2] << std::endl;
 	std::cout << out[3] << std::endl;
 	std::cout << out[4] << std::endl;*/
-	/*for (int i = 0; i < 629; ++i) {
+	for (int i = 0; i < 629; ++i) {
 		std::cout << out[i] << std::endl;
-	}*/
+	}
 	/*std::cout << vectorRepr[0] << std::endl;
 	std::cout << vectorRepr[1] << std::endl;
 	std::cout << vectorRepr[2] << std::endl;
