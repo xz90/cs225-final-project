@@ -18,4 +18,7 @@ std::string file_to_string(const std::string & filename);
  */
 std::vector<std::string> file_to_vector(const std::string & filename);
 
-void filter_blank_spaces(ifstream & in_stream, ofstream & out_stream);
+
+void split(const string& s, vector<string>& tokens, const string& delimiters);
+
+std::vector<std::string> getVector(int counter, std::vector<std::string> origin);

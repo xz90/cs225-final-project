@@ -22,7 +22,7 @@ int main(int argc, const char * argv[]) {
 	std::cout << argc << std::endl;
 }
 */
-std::vector<std::string> line_split(std::vector<std::string> vec, int position);
+
 int main() {
 	std::cout << "Filename: " << "airports.dat.txt" << std::endl;
 	
@@ -34,31 +34,24 @@ int main() {
 	
 	// convert file to vector representation
 	std::cout << "Vector Representation:" << std::endl;
+	// store each line into a vector
 	std::vector<std::string> vectorRepr = file_to_vector("airports.dat.txt");
-	
-
-	
 	std::vector<std::string> out;
-	out = line_split(vectorRepr, 3);
-	/*for (auto word : out) {
+	for (unsigned i = 1; i < 7699; ++i) {
+		size_t n = std::count(vectorRepr[i].begin(), vectorRepr[i].end(), ',');
+		if (n == 13) {	// to check if the data satisfy our required format
+			split(vectorRepr[i], out, ",");	// call split function to 
+		}
+	}
+	std::vector<std::string> newout;
+	int counter = 4;
+	newout = getVector(counter, out);
+	for (auto word : newout) {
 		std::cout << word << std::endl;
-	}*/
+	}
 	/*
 	// The same as above
 	for (std::vector<std::string>::iterator it = vectorRepr.begin(); it != vectorRepr.end(); ++it) {
 		std::cout << *it << std::endl;
 	}*/
-	/*std::cout << out[0] << std::endl;
-	std::cout << out[1] << std::endl;
-	std::cout << out[2] << std::endl;
-	std::cout << out[3] << std::endl;
-	std::cout << out[4] << std::endl;*/
-	for (int i = 0; i < 629; ++i) {
-		std::cout << out[i] << std::endl;
-	}
-	/*std::cout << vectorRepr[0] << std::endl;
-	std::cout << vectorRepr[1] << std::endl;
-	std::cout << vectorRepr[2] << std::endl;
-	std::cout << vectorRepr[3] << std::endl;
-	std::cout << vectorRepr[4] << std::endl;*/
 }
