@@ -35,7 +35,7 @@ int main() {
 	// convert file to vector representation
 	std::cout << "Vector Representation:" << std::endl;
 	// store each line into a vector
-	std::vector<std::string> vectorRepr = file_to_vector("airports.dat.txt");
+	/*std::vector<std::string> vectorRepr = file_to_vector("airports.dat.txt");
 	std::vector<std::string> out;
 	for (unsigned i = 1; i < 7699; ++i) {
 		size_t n = std::count(vectorRepr[i].begin(), vectorRepr[i].end(), ',');
@@ -48,7 +48,20 @@ int main() {
 	newout = getVector(counter, out);
 	for (auto word : newout) {
 		std::cout << word << std::endl;
+	}*/
+	std::vector<std::string> vectorRepr = file_to_vector("routes.dat.txt");
+	for (unsigned i = 1; i < 67663; ++i) {
+		std::vector<std::string> out;
+		size_t n = std::count(vectorRepr[i].begin(), vectorRepr[i].end(), ',');
+		if (n == 8) {	// to check if the data satisfy our required format
+			split(vectorRepr[i], out, ",");	// call split function to 
+			std::cout<< out[0]<<std::endl;
+		}
 	}
+		
+	/*for (auto word : newout) {
+		std::cout << word << std::endl;
+	}*/
 	/*
 	// The same as above
 	for (std::vector<std::string>::iterator it = vectorRepr.begin(); it != vectorRepr.end(); ++it) {
