@@ -4,10 +4,11 @@
 #include "../catch/catch.hpp"
 #include "../readFromFile.hpp"
 #include "../Airport.h"
+#include "../Route.h"
 
 
 // TEST CASES FOR AIRPORT CLASS
-TEST_CASE("Constructor") {
+TEST_CASE("Airport Constructor") {
 	unsigned id = 0;
 	Airport sample(id, "test", "TEST", 1.1, 2.2 ,"Champaign", "USA", 0);
 	REQUIRE(sample.getAirportID() == 0);
@@ -29,6 +30,31 @@ TEST_CASE("operator== for Airport class") {
 }
 // END TEST CASES FOR AIRPORT CLASS
 
+
+// TEST CASES FOR ROUTE CLASS
+TEST_CASE("Constructor") {
+	unsigned id = 0;
+	unsigned id1 = 1;
+	Airport sample(id, "test", "TEST", 1.1, 2.2 ,"Champaign", "USA", 0);
+	Airport sample1(id, "test1", "TESTONE", 1.0, 2.2 ,"Chicago", "USA", 1);
+	Route sampleRoute(id, "route", sample, sample1, id1);
+	SUCCEED();
+}
+
+TEST_CASE("get distance of routes") {
+	unsigned id = 0;
+	unsigned id1 = 1;
+	Airport sample(id, "test", "TEST", 1.1, 2.2 ,"Champaign", "USA", 0);
+	Airport sample1(id, "test1", "TESTONE", 1.0, 2.2 ,"Chicago", "USA", 1);
+	Route sampleRoute(id, "route", sample, sample1, id1);
+	REQUIRE(sampleRoute.getSourceAirport() == sample);
+	REQUIRE(sampleRoute.getDestinationAirport() == sample1);
+	REQUIRE(sampleRoute.getRouteIATACode() == "route");
+	REQUIRE(sampleRoute.getRouteID() == id);
+	REQUIRE(sampleRoute.getDistance() == Approx(11.1194926645));
+}
+
+// END TEST CASES FOR ROUTE CLASS
 
 
 TEST_CASE("Verify that file_to_string works on a small example") {
