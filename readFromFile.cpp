@@ -30,9 +30,9 @@ std::vector<std::string> file_to_vector(const std::string & filename) {
 	if (text.is_open()) {
 		// stream: continuous
 		std::istream_iterator<std::string> iter(text);
-    	string      line; //保存读入的每一行
-    	//while(getline(text,line))//会自动把\n换行符去掉 
-		while(getline(text,line))//会自动把\n换行符去掉 
+    	string      line; // Save each line
+    	//while(getline(text,line))// Remove \n
+		while(getline(text,line))// Remove \n
     	{
         	out.push_back(line);  
     	}
