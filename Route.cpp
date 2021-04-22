@@ -4,16 +4,16 @@
 #define pi 3.14159265358979323846
 
 
-Route::Route(unsigned ID, string IATAcode, Airport& source, Airport& destination, unsigned stops) : source_airport(source), detination_airport(destination) {
-    route_ID = ID;
+Route::Route(string IATAcode, Airport& source, Airport& destination, unsigned stops) : source_airport(source), detination_airport(destination) {
+    //route_ID = ID;
     route_IATAcode = IATAcode;
     route_stops = stops;
     route_distance = calculateDistance();
 }
 
-unsigned Route::getRouteID() const {
+/*unsigned Route::getRouteID() const {
     return route_ID;
-}
+}*/
 
 std::string Route::getRouteIATACode() const {
     return route_IATAcode;

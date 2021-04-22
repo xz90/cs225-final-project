@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "readFromFile.hpp"
+#include "Route.h"
 
 using namespace std;
 
@@ -23,8 +24,20 @@ int main(int argc, const char * argv[]) {
 }
 */
 
+Airport* findAirport(vector<Airport> & airports, string identifier);
+Airport* findAirport(vector<Airport> & airports, string identifier){
+	string tmp = "\"" + identifier + "\"";
+	for (unsigned i = 0; i < airports.size(); ++i) {
+		//cout << identifier << endl;
+		if (tmp == airports[i].getAirportIATACode()) {
+			return &airports[i];
+		}
+	}
+	return NULL;
+}
+
 int main() {
-	std::cout << "Filename: " << "airports.dat.txt" << std::endl;
+	//std::cout << "Filename: " << "airports.dat.txt" << std::endl;
 	
 	// convert file to string representation
 	/*
@@ -33,31 +46,48 @@ int main() {
 	*/
 	
 	// convert file to vector representation
-	std::cout << "Vector Representation:" << std::endl;
+	//std::cout << "Vector Representation:" << std::endl;
 	// store each line into a vector
-	/*std::vector<std::string> vectorRepr = file_to_vector("airports.dat.txt");
-	std::vector<std::string> out;
-	for (unsigned i = 1; i < 7699; ++i) {
-		size_t n = std::count(vectorRepr[i].begin(), vectorRepr[i].end(), ',');
+
+
+	vector<Airport> airports;
+	std::vector<std::string> airportRepr = file_to_vector("airports.dat.txt");
+	for (unsigned i = 1; i < 7699; ++i) { //7699
+		std::vector<std::string> airportOut;
+		size_t n = std::count(airportRepr[i].begin(), airportRepr[i].end(), ',');
 		if (n == 13) {	// to check if the data satisfy our required format
-			split(vectorRepr[i], out, ",");	// call split function to 
+			split(airportRepr[i], airportOut, ",");	// call split function to 
+			Airport airport_target(stoul(airportOut[0]), airportOut[1], airportOut[4], stod(airportOut[6]), stod(airportOut[7]), airportOut[2], airportOut[3], stod(airportOut[8]));
+			airports.push_back(airport_target);
 		}
 	}
-	std::vector<std::string> newout;
-	int counter = 4;
-	newout = getVector(counter, out);
-	for (auto word : newout) {
-		std::cout << word << std::endl;
+	/*for (unsigned i = 0; i < airports.size(); ++i) {
+		std::cout << airports[i].getAirportID() << std::endl;
 	}*/
-	std::vector<std::string> vectorRepr = file_to_vector("routes.dat.txt");
-	for (unsigned i = 1; i < 67663; ++i) {
-		std::vector<std::string> out;
-		size_t n = std::count(vectorRepr[i].begin(), vectorRepr[i].end(), ',');
+
+	vector<Route> routes;
+	std::vector<std::string> routeRepr = file_to_vector("routes.dat.txt");
+	for (unsigned i = 0; i < 67663; ++i) {
+		std::vector<std::string> routeOut;
+		size_t n = std::count(routeRepr[i].begin(), routeRepr[i].end(), ',');
 		if (n == 8) {	// to check if the data satisfy our required format
-			split(vectorRepr[i], out, ",");	// call split function to 
-			std::cout<< out[0]<<std::endl;
+			split(routeRepr[i], routeOut, ",");	// call split function to 
+			string source_airport_id = routeOut[2];
+			//cout << source_airport_id <<endl;
+			string destination_airport_id = routeOut[4];
+			Airport* source_airport_airport = findAirport(airports, source_airport_id);
+			Airport* destination_airport_airport = findAirport(airports, destination_airport_id);
+			//cout << i << endl;
+			if (source_airport_airport == NULL || destination_airport_airport == NULL) continue;
+			Route route_target(routeOut[0], *source_airport_airport, *destination_airport_airport, stoul(routeOut[routeOut.size()-2]));
+			routes.push_back(route_target);
 		}
 	}
+	//cout << routes.size() << endl;
+	/*for (unsigned i = 0; i < routes.size(); ++i) {
+		std::cout << routes[i].getSourceAirport().getAirportIATACode() << std::endl;
+	}*/
+}
 		
 	/*for (auto word : newout) {
 		std::cout << word << std::endl;
@@ -67,4 +97,3 @@ int main() {
 	for (std::vector<std::string>::iterator it = vectorRepr.begin(); it != vectorRepr.end(); ++it) {
 		std::cout << *it << std::endl;
 	}*/
-}

@@ -7,22 +7,22 @@ class Route
 {
 private:
     /* data */ 
-    unsigned route_ID;    
-    string route_IATAcode;  
-    Airport source_airport;
-    Airport detination_airport;
-    unsigned route_stops;
-    double route_distance;
+    //unsigned route_ID;    //1
+    string route_IATAcode;  //0
+    Airport source_airport; //2
+    Airport detination_airport; //4
+    unsigned route_stops;   //7
+    double route_distance;  //
 
 public:
 
     /**
      * string city, string country, double altitude: these 3 variables have default values, no need to use if unnecessary
      */
-    Route(unsigned ID, string IATAcode, Airport& source, Airport& destination, unsigned stops);
+    Route(string IATAcode, Airport& source, Airport& destination, unsigned stops);
     
     // getter functions
-    unsigned getRouteID() const;
+    //unsigned getRouteID() const;
     string getRouteIATACode() const;
     const Airport& getSourceAirport() const;
     const Airport& getDestinationAirport() const;

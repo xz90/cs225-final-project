@@ -9,7 +9,7 @@ private:
     unsigned airport_ID;    //0
     string airport_name;    //1
     string airport_IATAcode;    //4
-    pair<double, double> airport_position; // <latitude, longitude> of certain airport  //5, 6
+    pair<double, double> airport_position; // <latitude, longitude> of certain airport  //6, 7
     pair<string, string> airport_location; // <city, country> of certain airport    //2, 3
     double airport_altitude;    //8
 
