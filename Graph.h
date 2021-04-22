@@ -22,6 +22,7 @@ private:
   bool** adjMatrix;
   vector<Airport> _airports;
   vector<Route> _routes;
+  int _numAirports; // number of airports we want to use
 
     
 public:
@@ -29,8 +30,7 @@ public:
   Graph(vector<Airport> airports, vector<Route> routes);
   ~Graph();
 
-  bool areAdjacent(Airport airport1, Airport airport2);
-  vector<Route> incidentEdges(Airport airport);
+  vector<Airport> get_adj_airport(Airport airport);
   
     
 };

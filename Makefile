@@ -31,8 +31,11 @@ $(EXENAME): output_msg $(OBJS)
 # Need to add file.cpp
 =======
 >>>>>>> baoyul2
-readFromFile.o: main.cpp readFromFile.cpp Airport.cpp Route.cpp Graph.cpp
-	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp Airport.cpp Route.cpp Graph.cpp
+readFromFile.o: main.cpp readFromFile.cpp
+	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp
+
+readFromFile.o: main.cpp Graph.cpp
+	$(CXX) $(CXXFLAGS) main.cpp Graph.cpp
 
 test: output_msg catch/catchmain.cpp tests/tests.cpp readFromFile.cpp
 	$(LD) catch/catchmain.cpp tests/tests.cpp readFromFile.cpp $(LDFLAGS) -o test

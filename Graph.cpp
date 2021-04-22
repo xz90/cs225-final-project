@@ -16,13 +16,14 @@ Graph::Graph(vector<Airport> airports, vector<Route> routes) {
     _airports = airports;
     _routes = routes;
 
-    int numAirport = _airports.size()
-    adjMatrix = new bool*[numAirport];
+    _numAirport = _airports.size();
+
+    adjMatrix = new bool*[_numAirport];
 
     // initialize the matrix to zero
-    for (int i = 0; i < numAirport; i++) {
-        adjMatrix[i] = new bool[numAirport];
-        for (int j = 0; j < numAirport; j++) {
+    for (int i = 0; i < _numAirport; i++) {
+        adjMatrix[i] = new bool[_numAirport];
+        for (int j = 0; j < _numAirport; j++) {
             adjMatrix[i][j] = false;
         }
     }
@@ -44,4 +45,26 @@ Graph::Graph(vector<Airport> airports, vector<Route> routes) {
         }
     }
    
+}
+
+vector<Airport> Graph::get_adj_airport(Airport airport) {
+
+    vector<Airport> res = NULL;
+
+    auto airportItr = find(_airports.begin(), _airports.end(), airport);
+
+    // Check _airports whether contains airport
+    if (airportItr != _airports.end()) {
+        // get the Index of this airport
+        int airportIdx = distance(_airports.begin(), airportItr);
+
+        // Find the Adj edges
+        for (int i = 0; i < _numAirports; i++) {
+            if (adjMatrix[airportIdx][i]) {
+                res.push_back(_airports[i]);
+            }
+        }
+    }
+
+    return res;
 }
