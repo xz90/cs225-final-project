@@ -37,8 +37,8 @@ Route.o: Route.cpp
 Graph.o: Graph.cpp
 	$(CXX) $(CXXFLAGS) Graph.cpp
 
-test: output_msg catch/catchmain.cpp tests/tests.cpp readFromFile.cpp
-	$(LD) catch/catchmain.cpp tests/tests.cpp readFromFile.cpp $(LDFLAGS) -o test
+test: output_msg catch/catchmain.cpp tests/tests.cpp readFromFile.cpp Airport.cpp Route.cpp Graph.cpp
+	$(LD) catch/catchmain.cpp tests/tests.cpp readFromFile.cpp Airport.cpp Route.cpp Graph.cpp $(LDFLAGS) -o test
 
 clean:
 	-rm -f *.o $(EXENAME) test
