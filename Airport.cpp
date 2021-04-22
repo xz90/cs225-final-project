@@ -1,4 +1,3 @@
-# pragma once
 # include "Airport.h"
 
 Airport::Airport() { }

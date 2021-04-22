@@ -9,8 +9,8 @@ private:
     /* data */ 
     unsigned route_ID;    
     string route_IATAcode;  
-    const Airport& source_airport;
-    const Airport& detination_airport;
+    Airport source_airport;
+    Airport detination_airport;
     unsigned route_stops;
     double route_distance;
 
@@ -19,7 +19,7 @@ public:
     /**
      * string city, string country, double altitude: these 3 variables have default values, no need to use if unnecessary
      */
-    Route(unsigned ID, string IATAcode, const Airport& source, const Airport& destination, unsigned stops);
+    Route(unsigned ID, string IATAcode, Airport& source, Airport& destination, unsigned stops);
     
     // getter functions
     unsigned getRouteID() const;
@@ -33,5 +33,3 @@ public:
     double calculateDistance() const;
 
 };
-
-# include "Route.cpp"

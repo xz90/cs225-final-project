@@ -28,6 +28,7 @@ private:
 public:
   Graph();
   Graph(vector<Airport> airports, vector<Route> routes);
+  Graph(const Graph& other);
   ~Graph();
 
   vector<Airport> get_adj_airport(Airport airport);

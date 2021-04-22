@@ -2,10 +2,7 @@
 EXENAME = finalproj
 
 # Object Types
-<<<<<<< HEAD
 # Need to add file.o
-=======
->>>>>>> baoyul2
 OBJS = readFromFile.o main.o Airport.o Route.o Graph.o
 
 # Compilation Flags
@@ -27,15 +24,18 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME): output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-<<<<<<< HEAD
 # Need to add file.cpp
-=======
->>>>>>> baoyul2
 readFromFile.o: main.cpp readFromFile.cpp
 	$(CXX) $(CXXFLAGS) main.cpp readFromFile.cpp
 
-readFromFile.o: main.cpp Graph.cpp
-	$(CXX) $(CXXFLAGS) main.cpp Graph.cpp
+Airport.o: Airport.cpp
+	$(CXX) $(CXXFLAGS) Airport.cpp
+
+Route.o: Route.cpp
+	$(CXX) $(CXXFLAGS) Route.cpp
+
+Graph.o: Graph.cpp
+	$(CXX) $(CXXFLAGS) Graph.cpp
 
 test: output_msg catch/catchmain.cpp tests/tests.cpp readFromFile.cpp
 	$(LD) catch/catchmain.cpp tests/tests.cpp readFromFile.cpp $(LDFLAGS) -o test

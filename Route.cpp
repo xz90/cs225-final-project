@@ -1,11 +1,10 @@
-# pragma once
 # include "Route.h"
 #include <cmath>
 
 #define pi 3.14159265358979323846
 
 
-Route::Route(unsigned ID, string IATAcode, const Airport& source, const Airport& destination, unsigned stops) : source_airport(source), detination_airport(destination) {
+Route::Route(unsigned ID, string IATAcode, Airport& source, Airport& destination, unsigned stops) : source_airport(source), detination_airport(destination) {
     route_ID = ID;
     route_IATAcode = IATAcode;
     route_stops = stops;
