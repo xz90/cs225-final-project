@@ -37,20 +37,23 @@ TEST_CASE("Constructor") {
 	unsigned id1 = 1;
 	Airport sample(id, "test", "TEST", 1.1, 2.2 ,"Champaign", "USA", 0);
 	Airport sample1(id, "test1", "TESTONE", 1.0, 2.2 ,"Chicago", "USA", 1);
-	Route sampleRoute(id, "route", sample, sample1, id1);
+	Route sampleRoute("route", sample, sample1, id1);
 	SUCCEED();
 }
+// Route(string IATAcode, Airport& source, Airport& destination, 
+//unsigned stops);
+
 
 TEST_CASE("get distance of routes") {
 	unsigned id = 0;
 	unsigned id1 = 1;
 	Airport sample(id, "test", "TEST", 1.1, 2.2 ,"Champaign", "USA", 0);
 	Airport sample1(id, "test1", "TESTONE", 1.0, 2.2 ,"Chicago", "USA", 1);
-	Route sampleRoute(id, "route", sample, sample1, id1);
+	Route sampleRoute("route", sample, sample1, id1);
 	REQUIRE(sampleRoute.getSourceAirport() == sample);
 	REQUIRE(sampleRoute.getDestinationAirport() == sample1);
 	REQUIRE(sampleRoute.getRouteIATACode() == "route");
-	REQUIRE(sampleRoute.getRouteID() == id);
+	//REQUIRE(sampleRoute.getRouteID() == id);
 	REQUIRE(sampleRoute.getDistance() == Approx(11.1194926645));
 }
 
