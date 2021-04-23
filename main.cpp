@@ -2,6 +2,7 @@
 #include <vector>
 #include "readFromFile.hpp"
 #include "Route.h"
+#include "Graph.h"
 
 using namespace std;
 
@@ -87,6 +88,26 @@ int main() {
 	/*for (unsigned i = 0; i < routes.size(); ++i) {
 		std::cout << routes[i].getSourceAirport().getAirportIATACode() << std::endl;
 	}*/
+	Graph graph(airports, routes);
+	//bool** adjMatrix = graph.get_adj_matrix();
+	/*for (int i = 0; i < graph.get_num_airports(); i++) {
+        for (int j = 0; j < graph.get_num_airports(); j++) {
+            cout << adjMatrix[i][j] << endl;
+        }
+    }*/
+	/*vector<Airport> out = graph.get_airports();
+	for (unsigned i = 0; i < out.size(); ++i) {
+		std::cout << out[i].getAirportIATACode() << std::endl;
+	}*/
+	
+	vector<Airport> adj_airport = graph.get_adj_airport(airports[3]);
+	cout << "Our input airport is" << airports[3].getAirportIATACode() <<endl;
+	cout << "The number of adjacent airports" << endl;
+	cout << adj_airport.size() <<endl;
+	cout << "Our adjacent airports are" << endl;
+	for (unsigned i = 0; i < adj_airport.size(); ++i) {
+		cout<< adj_airport[i].getAirportIATACode()<<endl;
+	}
 }
 		
 	/*for (auto word : newout) {

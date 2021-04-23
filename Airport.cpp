@@ -52,9 +52,10 @@ double Airport::getAirportAltitude() const {
     return airport_altitude;
 }
 
+// delete the get altitude here
 bool Airport::operator==(const Airport& other) const {
     if (airport_ID != other.airport_ID || airport_name != other.airport_name || airport_position != other.airport_position
-        || airport_location != other.airport_location || airport_altitude != other.airport_altitude) {
+        || airport_location != other.airport_location) {
         return false;
     }
     return true;

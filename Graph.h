@@ -27,10 +27,14 @@ private:
     
 public:
   Graph();
-  Graph(vector<Airport> airports, vector<Route> routes);
+  Graph(vector<Airport> & airports, vector<Route> & routes);
   Graph(const Graph& other);
   ~Graph();
 
+  bool** get_adj_matrix();
+  int get_num_airports();
+  vector<Airport> & get_airports();
+  vector<Route> & get_routes();
   vector<Airport> get_adj_airport(Airport airport);
   
     
