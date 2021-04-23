@@ -8,43 +8,47 @@
 
 using namespace std;
 
-vector<Airport> BFS::traversal(Graph graph, Airport airport) {
-    
-    int count = 0;
-    Airport& start_airport = graph.get_airports()[0];
+vector<Airport> BFS::traversal(Graph graph, Airport source) {
+
+    //given source airport find all reachable, if there is a path, we can reach
+    // 
+
+    if (!graph.exist_airport(source)) {
+        return vector<Airport>();
+    }
+
+    // int count = 0;
     int V = graph.get_num_airports();
 
     queue<Airport> queue;
     vector<bool> visited(V);
-    vector<Airport> path;
-
+    // which airport -> each bool
+    vector<Airport> reachable_ap;
+    queue.push(source);
+    unsigned id = source.getAirportID();
 
     for(int i = 0; i < V; i++) {
         visited[i] = false; 
-        queue.push(graph.get_airports()[i]);
     }
-
-    visited[0] = true;
+    // id now is the index of vector visited
+    visited[id] = true;
 
     while(!queue.empty()) {
         Airport& curr = queue.front();
-        cout << curr.getAirportID() + " ";
-        path.push_back(curr);
+        reachable_ap.push_back(curr);
         queue.pop();
 
         vector<Airport> adj_airports = graph.get_adj_airport(curr);
-        for (Airport& airport : adj_airports)
+        for (size_t i = 0; i < adj_airports.size(); i++) 
         {
-            if (!visited[])
+            unsigned cur_id = adj_airports[i].getAirportID();
+            if (!visited[cur_id])
             {
-                visited[*i] = true;
-                queue.push_back(*i);
+                visited[cur_id] = true;
+                queue.push(adj_airports[i]);
             }
         }
     }
-    // not finished
 
-
-
-    return path;  
+    return reachable_ap;  
 }

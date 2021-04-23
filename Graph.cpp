@@ -109,6 +109,17 @@ vector<Airport> Graph::get_adj_airport(Airport airport) {
             }
         }
     }
-
+    // maybe too slow
+    // O (deg(airport)) use map airport -> index
+    
     return res;
+}
+
+bool Graph::exist_airport(Airport airport) {
+    for (size_t i = 0; i < _airports.size(); i++) {
+        if (airport == _airports[i]) {
+            return true;
+        }
+    }
+    return false;
 }

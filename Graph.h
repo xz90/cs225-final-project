@@ -36,7 +36,7 @@ public:
   vector<Airport> & get_airports();
   vector<Route> & get_routes();
   vector<Airport> get_adj_airport(Airport airport);
-  
+  bool exist_airport(Airport airport);
     
 };
 
