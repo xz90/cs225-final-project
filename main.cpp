@@ -3,6 +3,7 @@
 #include "readFromFile.hpp"
 #include "Route.h"
 #include "Graph.h"
+#include "BFS.h"
 
 using namespace std;
 
@@ -108,6 +109,7 @@ int main() {
 	for (unsigned i = 0; i < adj_airport.size(); ++i) {
 		cout<< adj_airport[i].getAirportIATACode()<<endl;
 	}
+	//vector<Airport> BFStraversal = traversal(graph, airports[1]);
 }
 		
 	/*for (auto word : newout) {

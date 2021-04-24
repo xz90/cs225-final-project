@@ -9,5 +9,6 @@
 using namespace std;
 
 class BFS {
-    vector<Airport> traversal(Graph graph, Airport airport);
+    public:
+    vector<Airport> traversal(Graph & graph, Airport & airport);
 };

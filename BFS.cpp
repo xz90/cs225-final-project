@@ -8,7 +8,7 @@
 
 using namespace std;
 
-vector<Airport> BFS::traversal(Graph graph, Airport source) {
+vector<Airport> BFS::traversal(Graph & graph, Airport & source) {
 
     //given source airport find all reachable, if there is a path, we can reach
     // 
