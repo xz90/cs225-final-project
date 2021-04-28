@@ -101,6 +101,7 @@ int main() {
 		std::cout << out[i].getAirportIATACode() << std::endl;
 	}*/
 	
+	/*
 	vector<Airport> adj_airport = graph.get_adj_airport(airports[3]);
 	cout << "Our input airport is" << airports[3].getAirportIATACode() <<endl;
 	cout << "The number of adjacent airports" << endl;
@@ -109,8 +110,25 @@ int main() {
 	for (unsigned i = 0; i < adj_airport.size(); ++i) {
 		cout<< adj_airport[i].getAirportIATACode()<<endl;
 	}
+	*/
+	
+
 	//vector<Airport> BFStraversal = traversal(graph, airports[1]);
+
+	// BFS
+
+	BFS bfs;
+	vector<Airport> out = bfs.traversal(graph, airports[4]);
+	cout << out.size() << endl;
+
+	cout << "BFS:" << endl;
+	for (unsigned i = 0; i < out.size(); ++i) {
+		cout<< out[i].getAirportIATACode() << endl;
+	}
+
+	cout << out.size() << endl;
 }
+
 		
 	/*for (auto word : newout) {
 		std::cout << word << std::endl;
