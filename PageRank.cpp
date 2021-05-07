@@ -4,15 +4,15 @@
 // # include <map>
 // # include <string>
 # include <iostream>
-// #include <algorithm>
+# include <algorithm>
 
 using namespace std;
 
 void PageRank::ModifyRankMatrix(Graph & graph) {
     // operation with rankMatrix
-    for (size_t i = 0; i < graph.get_airports().size(); i++) {
+    for (size_t i = 0; i < graph.get_num_airports(); i++) {
         size_t count = 0;
-        for (size_t j = 0; j < graph.get_airports().size(); j++) {
+        for (size_t j = 0; j < graph.get_num_airports(); j++) {
             if (graph.get_rank_matrix()[i][j] != 0) {
                 count++;
             }

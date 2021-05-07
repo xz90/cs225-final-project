@@ -91,10 +91,12 @@ int main() {
 	}*/
 	Graph graph(airports, routes);
 
+	/*
 	vector<Airport> out = graph.get_airports();
 	for (unsigned i = 0; i < out.size(); ++i) {
 		std::cout << out[i].getAirportIATACode() << std::endl;
 	}
+	*/
 	
 	
 	vector<Airport> adj_airport = graph.get_adj_airport(airports[3]);
