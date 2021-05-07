@@ -192,7 +192,7 @@ bool Graph::is_equal(bool** adj, double** rank) {
             }
         }
     }
-    return false;
+    return res;
 }
 
 
