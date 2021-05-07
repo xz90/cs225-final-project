@@ -5,7 +5,8 @@
 #include "../readFromFile.hpp"
 #include "../Airport.h"
 #include "../Route.h"
-
+#include "../Graph.h"
+#include "../PageRank.h"
 
 // TEST CASES FOR AIRPORT CLASS
 TEST_CASE("Airport Constructor") {
@@ -79,3 +80,41 @@ TEST_CASE("Verify that file_to_vector works on a small example") {
 
 
 // TEST CASE FOR GRAPH CLASS
+
+
+// TEST CASE FOR PAGERANK
+TEST_CASE("Graph Constructor") {
+	unsigned idA = 0;
+	unsigned idB = 1;
+	unsigned idC = 2;
+	unsigned idD = 3;
+	Airport sampleA(idA, "test1", "TESTONE", 1.1, 2.2 ,"Champaign", "USA", 0);
+	Airport sampleB(idB, "test1", "TESTONE", 1.0, 2.2 ,"Chicago", "USA", 0);
+	Airport sampleC(idC, "test1", "TESTONE", 1.0, 2.2 ,"New York", "USA", 0);
+	Airport sampleD(idD, "test1", "TESTONE", 1.0, 2.2 ,"Los Angeles", "USA", 0);
+	vector<Airport> sampleAirportList;
+	sampleAirportList.push_back(sampleA);
+	sampleAirportList.push_back(sampleB);
+	sampleAirportList.push_back(sampleC);
+	sampleAirportList.push_back(sampleD);
+	Route sampleRouteAB("routeAB", sampleA, sampleB, 0);
+	Route sampleRouteAC("routeAC", sampleA, sampleC, 0);
+	Route sampleRouteAD("routeAD", sampleA, sampleD, 0);
+	Route sampleRouteBD("routeBD", sampleB, sampleD, 0);
+	Route sampleRouteCA("routeCA", sampleC, sampleA, 0);
+	Route sampleRouteDB("routeDB", sampleD, sampleB, 0);
+	vector<Route> sampleRouteList;
+	sampleRouteList.push_back(sampleRouteAB);
+	sampleRouteList.push_back(sampleRouteAC);
+	sampleRouteList.push_back(sampleRouteAD);
+	sampleRouteList.push_back(sampleRouteBD);
+	sampleRouteList.push_back(sampleRouteCA);
+	sampleRouteList.push_back(sampleRouteDB);
+	Graph sampleGraph(sampleAirportList, sampleRouteList);
+	SUCCEED();
+	PageRank pagerank;
+	vector<double> PageRankSample = pagerank.calculate(sampleGraph);
+	vector<double> empty;
+	REQUIRE(PageRankSample == empty);	
+}
+// END TEST CASE FOR PAGERANK
