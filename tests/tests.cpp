@@ -88,15 +88,18 @@ TEST_CASE("Graph Constructor for PageRank") {
 	unsigned idB = 1;
 	unsigned idC = 2;
 	unsigned idD = 3;
+	unsigned idE = 4;
 	Airport sampleA(idA, "test1", "TESTONE", 1.1, 2.2 ,"Champaign", "USA", 0);
 	Airport sampleB(idB, "test1", "TESTONE", 1.0, 2.2 ,"Chicago", "USA", 0);
 	Airport sampleC(idC, "test1", "TESTONE", 1.0, 2.2 ,"New York", "USA", 0);
 	Airport sampleD(idD, "test1", "TESTONE", 1.0, 2.2 ,"Los Angeles", "USA", 0);
+	Airport sampleE(idE, "test1", "TESTONE", 1.0, 2.2 ,"Washington", "USA", 0);
 	vector<Airport> sampleAirportList;
 	sampleAirportList.push_back(sampleA);
 	sampleAirportList.push_back(sampleB);
 	sampleAirportList.push_back(sampleC);
 	sampleAirportList.push_back(sampleD);
+	sampleAirportList.push_back(sampleE);
 	Route sampleRouteAB("routeAB", sampleA, sampleB, 0);
 	Route sampleRouteAC("routeAC", sampleA, sampleC, 0);
 	Route sampleRouteAD("routeAD", sampleA, sampleD, 0);
@@ -133,9 +136,14 @@ TEST_CASE("Graph Constructor for PageRank") {
 		REQUIRE(sampleGraph.get_rank_matrix()[1][0] == Approx(0.5));
 		vector<double> answer = pagerank.Calculate(sampleGraph);
 		REQUIRE(answer.size() == sampleGraph.get_airports().size());
-		REQUIRE(answer[0] == Approx(0.2708333333));
+		REQUIRE(answer[0] == Approx(0.272727534));
 	}
-	
+
+	SECTION("Pagerank empty row"){
+		REQUIRE(sampleGraph.get_rank_matrix()[4][0] == 0);
+		pagerank.ModifyRankMatrix(sampleGraph);
+		REQUIRE(sampleGraph.get_rank_matrix()[4][0] == 0.2);
+	}
 	
 	
 }

@@ -17,11 +17,18 @@ void PageRank::ModifyRankMatrix(Graph & graph) {
                 count++;
             }
         }
-        for (size_t j = 0; j < graph.get_airports().size(); j++) {
-            if (graph.rankMatrix[i][j] != 0) {
-                graph.rankMatrix[i][j] = graph.rankMatrix[i][j]/count;
+        if (count == 0) {
+            for (size_t j = 0; j < graph.get_airports().size(); j++) {
+                graph.rankMatrix[i][j] = 1.0/double(graph.get_airports().size());
+            }
+        } else {
+            for (size_t j = 0; j < graph.get_airports().size(); j++) {
+                if (graph.rankMatrix[i][j] != 0) {
+                    graph.rankMatrix[i][j] = graph.rankMatrix[i][j]/count;
             }
         }
+        }
+        
     }
 }
 
