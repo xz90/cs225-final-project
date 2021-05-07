@@ -91,7 +91,7 @@ Graph::Graph(vector<Airport> & airports, vector<Route> & routes) {
     
 }
 
-  Graph::Graph(const Graph& other) {
+Graph::Graph(const Graph& other) {
     adjMatrix = new bool*[other._numAirports];
     for (int i = 0; i < other._numAirports; i++) {
         adjMatrix[i] = new bool[other._numAirports];
@@ -102,7 +102,7 @@ Graph::Graph(vector<Airport> & airports, vector<Route> & routes) {
     _airports = other._airports;
     _routes = other._routes;
     _numAirports = other._numAirports;
-  }
+}
 
 bool** Graph::get_adj_matrix() const {
       return adjMatrix;
@@ -144,8 +144,6 @@ vector<Airport> Graph::get_adj_airport(Airport airport) {
             }
         }
     }
-    // maybe too slow
-    // O (deg(airport)) use map airport -> index
     
     return res;
 }
