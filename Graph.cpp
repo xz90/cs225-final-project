@@ -30,7 +30,7 @@ Graph::Graph(vector<Airport> & airports, vector<Route> & routes) {
     }
 
     // initilize the matrix with the route
-    for (unsigned k = 0; k < _routes.size(); k++) {
+    for (size_t k = 0; k < _routes.size(); k++) {
         Airport source = _routes[k].getSourceAirport();
         /*if (k == 0) {
             cout << source.getAirportIATACode() <<endl;
@@ -55,9 +55,40 @@ Graph::Graph(vector<Airport> & airports, vector<Route> & routes) {
             //cout << sourceIdx << endl;
             int destinationIdx = distance(_airports.begin(),destinationItr);
             adjMatrix[sourceIdx][destinationIdx] = true;
+            adjMatrix[destinationIdx][sourceIdx] = true;
         }
     }
-   
+
+    // Create rankMatrix;
+    rankMatrix = new double*[_numAirports];
+
+    // initialize the matrix to zero
+    for (int i = 0; i < _numAirports; i++) {
+        rankMatrix[i] = new double[_numAirports];
+        for (int j = 0; j < _numAirports; j++) {
+            rankMatrix[i][j] = 0;
+        }
+    }
+
+    // initilize the matrix with the route
+    for (size_t k = 0; k < _routes.size(); k++) {
+        Airport source = _routes[k].getSourceAirport();
+        Airport destination = _routes[k].getDestinationAirport();
+
+        auto sourceItr = find(_airports.begin(), _airports.end(), source);
+        auto destinationItr = find(_airports.begin(), _airports.end(), destination);
+
+        // Check whether the source and destination are in the airports vector
+        if (sourceItr != _airports.end() && destinationItr != _airports.end()) 
+        {
+            int sourceIdx = distance(_airports.begin(), sourceItr);
+            //cout << sourceIdx << endl;
+            int destinationIdx = distance(_airports.begin(),destinationItr);
+            rankMatrix[sourceIdx][destinationIdx] = 1;
+        }
+    }
+
+    
 }
 
   Graph::Graph(const Graph& other) {
@@ -73,7 +104,7 @@ Graph::Graph(vector<Airport> & airports, vector<Route> & routes) {
     _numAirports = other._numAirports;
   }
 
-bool** Graph::get_adj_matrix() {
+bool** Graph::get_adj_matrix() const {
       return adjMatrix;
 }
 
@@ -87,6 +118,10 @@ vector<Airport> & Graph::get_airports() {
 
 vector<Route> & Graph::get_routes() {
     return _routes;
+}
+
+double** Graph::get_rank_matrix() const {
+    return rankMatrix;
 }
 
 vector<Airport> Graph::get_adj_airport(Airport airport) {
@@ -123,3 +158,41 @@ bool Graph::exist_airport(Airport airport) {
     }
     return false;
 }
+
+void Graph::print_adj_matrix() {
+    for (int i = 0; i < _numAirports; i++) {
+        cout << i << ":";
+        for (int j = 0; j < _numAirports; j++) {
+            cout <<adjMatrix[i][j] << " ";
+        }
+        cout << "\n";
+    }
+}
+
+void Graph::print_rank_matrix() {
+    for (int i = 0; i < _numAirports; i++) {
+        cout << i << ":";
+        for (int j = 0; j < _numAirports; j++) {
+            cout <<rankMatrix[i][j] << " ";
+        }
+        cout << "\n";
+    }
+}
+
+bool Graph::is_equal(bool** adj, double** rank) {
+    bool res = true;
+    for (int i = 0; i < _numAirports; i++) {
+        for (int j = 0; j < _numAirports; j++) {
+            if (adj[i][j] == true && rank[i][j] == 0) {
+                res = false;
+            }
+
+            if (adj[i][j] == false && rank[i][j] == 1) {
+                res = false;
+            }
+        }
+    }
+    return false;
+}
+
+

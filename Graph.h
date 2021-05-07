@@ -19,10 +19,11 @@ class Graph
 private:
   // Vertices : Airport
   // Edges: Route
-  bool** adjMatrix;
+  bool** adjMatrix; // Undirected
   vector<Airport> _airports;
   vector<Route> _routes;
   int _numAirports; // number of airports we want to use
+  double** rankMatrix; // Directed, Used for PageRank
 
     
 public:
@@ -31,12 +32,17 @@ public:
   Graph(const Graph& other);
   ~Graph();
 
-  bool** get_adj_matrix();
+  bool** get_adj_matrix() const;
+  double** get_rank_matrix() const;
   int get_num_airports();
   vector<Airport> & get_airports();
   vector<Route> & get_routes();
   vector<Airport> get_adj_airport(Airport airport);
   bool exist_airport(Airport airport);
+  void print_adj_matrix();
+  void print_rank_matrix();
+
+  bool is_equal(bool** adj, double** rank); // Check whether adjMatrix and rankMatrix are the same
     
 };
 

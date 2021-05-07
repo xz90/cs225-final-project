@@ -90,18 +90,13 @@ int main() {
 		std::cout << routes[i].getSourceAirport().getAirportIATACode() << std::endl;
 	}*/
 	Graph graph(airports, routes);
-	//bool** adjMatrix = graph.get_adj_matrix();
-	/*for (int i = 0; i < graph.get_num_airports(); i++) {
-        for (int j = 0; j < graph.get_num_airports(); j++) {
-            cout << adjMatrix[i][j] << endl;
-        }
-    }*/
-	/*vector<Airport> out = graph.get_airports();
+
+	vector<Airport> out = graph.get_airports();
 	for (unsigned i = 0; i < out.size(); ++i) {
 		std::cout << out[i].getAirportIATACode() << std::endl;
-	}*/
+	}
 	
-	/*
+	
 	vector<Airport> adj_airport = graph.get_adj_airport(airports[3]);
 	cout << "Our input airport is" << airports[3].getAirportIATACode() <<endl;
 	cout << "The number of adjacent airports" << endl;
@@ -110,13 +105,20 @@ int main() {
 	for (unsigned i = 0; i < adj_airport.size(); ++i) {
 		cout<< adj_airport[i].getAirportIATACode()<<endl;
 	}
-	*/
+	
+
+	// print adj matrix
+	// graph.print_adj_matrix();
+
+	// print rank matrix
+	graph.print_rank_matrix();
 	
 
 	//vector<Airport> BFStraversal = traversal(graph, airports[1]);
 
 	// BFS
 
+	/*
 	BFS bfs;
 	vector<Airport> out = bfs.traversal(graph, airports[4]);
 	cout << out.size() << endl;
@@ -127,6 +129,8 @@ int main() {
 	}
 
 	cout << out.size() << endl;
+	*/
+
 }
 
 		
