@@ -83,7 +83,7 @@ TEST_CASE("Verify that file_to_vector works on a small example") {
 
 
 // TEST CASE FOR PAGERANK
-TEST_CASE("Graph Constructor") {
+TEST_CASE("Graph Constructor for PageRank") {
 	unsigned idA = 0;
 	unsigned idB = 1;
 	unsigned idC = 2;
@@ -100,6 +100,7 @@ TEST_CASE("Graph Constructor") {
 	Route sampleRouteAB("routeAB", sampleA, sampleB, 0);
 	Route sampleRouteAC("routeAC", sampleA, sampleC, 0);
 	Route sampleRouteAD("routeAD", sampleA, sampleD, 0);
+	Route sampleRouteBA("routeBA", sampleB, sampleA, 0);
 	Route sampleRouteBD("routeBD", sampleB, sampleD, 0);
 	Route sampleRouteCA("routeCA", sampleC, sampleA, 0);
 	Route sampleRouteDB("routeDB", sampleD, sampleB, 0);
@@ -107,14 +108,35 @@ TEST_CASE("Graph Constructor") {
 	sampleRouteList.push_back(sampleRouteAB);
 	sampleRouteList.push_back(sampleRouteAC);
 	sampleRouteList.push_back(sampleRouteAD);
+	sampleRouteList.push_back(sampleRouteBA);
 	sampleRouteList.push_back(sampleRouteBD);
 	sampleRouteList.push_back(sampleRouteCA);
 	sampleRouteList.push_back(sampleRouteDB);
 	Graph sampleGraph(sampleAirportList, sampleRouteList);
-	SUCCEED();
 	PageRank pagerank;
-	vector<double> PageRankSample = pagerank.calculate(sampleGraph);
-	vector<double> empty;
-	REQUIRE(PageRankSample == empty);	
+	SUCCEED();
+
+	SECTION("Pagerank modify test"){
+		REQUIRE(sampleGraph.get_rank_matrix()[0][1] == 1);
+		REQUIRE(sampleGraph.get_rank_matrix()[1][0] == 1);
+		pagerank.ModifyRankMatrix(sampleGraph);
+		REQUIRE(sampleGraph.get_rank_matrix()[0][1] == Approx(0.333333333333));
+		REQUIRE(sampleGraph.get_rank_matrix()[1][0] == Approx(0.5));
+	}
+
+	SECTION("Pagerank calculate test"){
+		REQUIRE(sampleGraph.get_rank_matrix()[0][1] == 1);
+		REQUIRE(sampleGraph.get_rank_matrix()[1][0] == 1);
+		pagerank.ModifyRankMatrix(sampleGraph);
+		REQUIRE(sampleGraph.get_rank_matrix()[0][0] == 0.0);
+		REQUIRE(sampleGraph.get_rank_matrix()[0][1] == Approx(0.333333333333));
+		REQUIRE(sampleGraph.get_rank_matrix()[1][0] == Approx(0.5));
+		vector<double> answer = pagerank.Calculate(sampleGraph);
+		REQUIRE(answer.size() == sampleGraph.get_airports().size());
+		REQUIRE(answer[0] == Approx(0.2708333333));
+	}
+	
+	
+	
 }
 // END TEST CASE FOR PAGERANK

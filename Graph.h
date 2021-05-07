@@ -23,7 +23,7 @@ private:
   vector<Airport> _airports;
   vector<Route> _routes;
   int _numAirports; // number of airports we want to use
-  double** rankMatrix; // Directed, Used for PageRank
+  
 
     
 public:
@@ -32,6 +32,9 @@ public:
   Graph(const Graph& other);
   ~Graph();
 
+  double** rankMatrix; // Directed, Used for PageRank
+
+  
   bool** get_adj_matrix() const;
   double** get_rank_matrix() const;
   int get_num_airports();

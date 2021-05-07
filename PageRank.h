@@ -6,5 +6,6 @@ using namespace std;
 
 class PageRank {
     public:
-    vector<double> calculate(Graph & graph);
+    void ModifyRankMatrix(Graph & graph);
+    vector<double> Calculate(Graph & graph);
 };
