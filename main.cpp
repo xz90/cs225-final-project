@@ -98,7 +98,7 @@ int main() {
 	}
 	*/
 	
-	
+	/*
 	vector<Airport> adj_airport = graph.get_adj_airport(airports[3]);
 	cout << "Our input airport is" << airports[3].getAirportIATACode() <<endl;
 	cout << "The number of adjacent airports" << endl;
@@ -107,6 +107,7 @@ int main() {
 	for (unsigned i = 0; i < adj_airport.size(); ++i) {
 		cout<< adj_airport[i].getAirportIATACode()<<endl;
 	}
+	*/
 	
 
 	// print adj matrix
@@ -115,9 +116,13 @@ int main() {
 	// print rank matrix
 	// graph.print_rank_matrix();
 
+	/*
 	bool** adj_matrix = graph.get_adj_matrix();
 	double ** rank_matrix = graph.get_rank_matrix();
 	cout << graph.is_equal(adj_matrix, rank_matrix) <<endl;
+	*/
+
+	
 	
 
 	//vector<Airport> BFStraversal = traversal(graph, airports[1]);

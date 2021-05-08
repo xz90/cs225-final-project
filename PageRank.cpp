@@ -18,11 +18,11 @@ void PageRank::ModifyRankMatrix(Graph & graph) {
             }
         }
         if (count == 0) {
-            for (size_t j = 0; j < graph.get_airports().size(); j++) {
-                graph.rankMatrix[i][j] = 1.0/double(graph.get_airports().size());
+            for (size_t j = 0; j < graph.et_num_airports(); j++) {
+                graph.rankMatrix[i][j] = 1.0/double(graph.et_num_airports());
             }
         } else {
-            for (size_t j = 0; j < graph.get_airports().size(); j++) {
+            for (size_t j = 0; j < graph.et_num_airports(); j++) {
                 if (graph.rankMatrix[i][j] != 0) {
                     graph.rankMatrix[i][j] = graph.rankMatrix[i][j]/count;
             }
@@ -33,7 +33,7 @@ void PageRank::ModifyRankMatrix(Graph & graph) {
 }
 
 vector<double> PageRank::Calculate(Graph & graph) {
-    size_t n = graph.get_airports().size();
+    size_t n = graph.get_num_airports();
     vector<double> result(n);
     // initialize the vector
     for (size_t i = 0; i < n; i++) {
@@ -57,4 +57,17 @@ vector<double> PageRank::Calculate(Graph & graph) {
     }
 
     return result;
+}
+
+vector<Airport> PageRank::rank_airport(Graph & graph) {
+    // Modify the rank matrix of the graph
+    ModifyRankMatrix(graph);
+    double** matrix = graph.get_rank_matrix();
+
+    // Stationary vector x
+    vector<double> x_stationary = Calculate(graph);
+
+    // initialize the rank vector
+    vector<Airport> rank(graph.get_num_airports());
+    vector<Airport> airport = graph.get_airports();
 }
