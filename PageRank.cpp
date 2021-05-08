@@ -5,24 +5,25 @@
 // # include <string>
 # include <iostream>
 # include <algorithm>
+# include <cmath>
 
 using namespace std;
 
 void PageRank::ModifyRankMatrix(Graph & graph) {
     // operation with rankMatrix
-    for (size_t i = 0; i < graph.get_num_airports(); i++) {
-        size_t count = 0;
-        for (size_t j = 0; j < graph.get_num_airports(); j++) {
+    for (int i = 0; i < graph.get_num_airports(); i++) {
+        int count = 0;
+        for (int j = 0; j < graph.get_num_airports(); j++) {
             if (graph.get_rank_matrix()[i][j] != 0) {
                 count++;
             }
         }
         if (count == 0) {
-            for (size_t j = 0; j < graph.et_num_airports(); j++) {
-                graph.rankMatrix[i][j] = 1.0/double(graph.et_num_airports());
+            for (int j = 0; j < graph.get_num_airports(); j++) {
+                graph.rankMatrix[i][j] = 1.0/double(graph.get_num_airports());
             }
         } else {
-            for (size_t j = 0; j < graph.et_num_airports(); j++) {
+            for (int j = 0; j < graph.get_num_airports(); j++) {
                 if (graph.rankMatrix[i][j] != 0) {
                     graph.rankMatrix[i][j] = graph.rankMatrix[i][j]/count;
             }
