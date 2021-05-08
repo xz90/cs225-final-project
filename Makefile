@@ -3,7 +3,7 @@ EXENAME = finalproj
 
 # Object Types
 # Need to add file.o
-OBJS = readFromFile.o main.o Airport.o Route.o Graph.o BFS.o PageRank.o
+OBJS = readFromFile.o main.o Airport.o Route.o Graph.o BFS.o PageRank.o Dijkstra.o
 
 # Compilation Flags
 CXX = clang++
@@ -43,8 +43,11 @@ BFS.o: BFS.cpp
 PageRank.o: PageRank.cpp
 	$(CXX) $(CXXFLAGS) PageRank.cpp
 
+Dijkstra.o: Dijkstra.cpp
+	$(CXX) $(CXXFLAGS) Dijkstra.cpp
+
 test: output_msg catch/catchmain.cpp tests/tests.cpp readFromFile.cpp Airport.cpp Route.cpp Graph.cpp
-	$(LD) catch/catchmain.cpp tests/tests.cpp readFromFile.cpp Airport.cpp Route.cpp Graph.cpp PageRank.cpp $(LDFLAGS) -o test
+	$(LD) catch/catchmain.cpp tests/tests.cpp readFromFile.cpp Airport.cpp Route.cpp Graph.cpp PageRank.cpp Dijkstra.cpp$(LDFLAGS) -o test
 
 clean:
 	-rm -f *.o $(EXENAME) test
