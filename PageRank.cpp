@@ -53,7 +53,7 @@ vector<double> PageRank::Calculate(Graph & graph) {
         }
 
         // Check
-        if (abs(result[0] - lastValue) < 0.00000001) {
+        if (abs(result[0] - lastValue) < 0.1) {
             break;
         }
     }
