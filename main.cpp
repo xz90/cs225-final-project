@@ -56,7 +56,7 @@ int main() {
 
 	vector<Airport> airports;
 	std::vector<std::string> airportRepr = file_to_vector("airports.dat.txt");
-	for (unsigned i = 1; i < 2180; ++i) { //TOTAL:7699 .. 2179
+	for (unsigned i = 1; i < 2179; ++i) { //TOTAL:7699 .. 2179
 		std::vector<std::string> airportOut;
 		size_t n = std::count(airportRepr[i].begin(), airportRepr[i].end(), ',');
 		if (n == 13) {	// to check if the data satisfy our required format
