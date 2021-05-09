@@ -91,6 +91,7 @@ int main() {
 	/*for (unsigned i = 0; i < routes.size(); ++i) {
 		std::cout << routes[i].getSourceAirport().getAirportIATACode() << std::endl;
 	}*/
+		Graph graph(airports, routes);
 	/*
 	vector<Airport> out = graph.get_airports();
 	for (unsigned i = 0; i < out.size(); ++i) {
@@ -151,7 +152,6 @@ int main() {
 	pagerank.print_rank(graph);
 	
 		// 3 4 connected
-	Graph graph(airports, routes);
 	cout << "Our source airport is " << airports[3].getAirportIATACode() << endl;
 	Dijkstra dijkstra(graph, airports[3]);
 	cout << "Our destination airport is " << airports[1].getAirportIATACode() << endl;
