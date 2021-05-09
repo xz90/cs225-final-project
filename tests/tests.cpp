@@ -195,7 +195,7 @@ TEST_CASE("Graph Constructor for PageRank") {
 		REQUIRE(sampleGraph.get_rank_matrix()[1][0] == Approx(0.5));
 		vector<double> answer = pagerank.Calculate(sampleGraph);
 		REQUIRE(answer.size() == sampleGraph.get_airports().size());
-		REQUIRE(answer[0] == Approx(0.272727534));
+		REQUIRE(answer[0] == Approx(0.268));
 	}
 
 	SECTION("Pagerank empty row"){
@@ -204,12 +204,12 @@ TEST_CASE("Graph Constructor for PageRank") {
 		REQUIRE(sampleGraph.get_rank_matrix()[4][0] == 0.2);
 	}
 
-	/*
 	SECTION("Pagerank rank test"){
+		pagerank.ModifyRankMatrix(sampleGraph);
 		vector<Airport> rank = pagerank.rank_airport(sampleGraph);
 		REQUIRE(rank[0] == sampleB);
 	}
-	*/
+	
 	
 	
 	
