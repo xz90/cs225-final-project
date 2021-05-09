@@ -7,6 +7,7 @@
 #include "../Route.h"
 #include "../Graph.h"
 #include "../PageRank.h"
+#include "../Dijkstra.h"
 
 // TEST CASES FOR AIRPORT CLASS
 TEST_CASE("Airport Constructor") {

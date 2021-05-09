@@ -4,6 +4,7 @@
 #include "Route.h"
 #include "Graph.h"
 #include "BFS.h"
+#include "PageRank.h"
 
 using namespace std;
 
@@ -141,6 +142,11 @@ int main() {
 
 	cout << out.size() << endl;
 	*/
+
+	// PageRank
+	PageRank pagerank;
+	vector<Airport> rank = pagerank.rank_airport(graph);
+	cout << rank[0].getAirportIATACode() << endl;
 
 }
 
