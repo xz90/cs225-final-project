@@ -145,8 +145,12 @@ int main() {
 
 	// PageRank
 	PageRank pagerank;
+	vector<double> x = pagerank.Calculate(graph);
+
+	/*
 	vector<Airport> rank = pagerank.rank_airport(graph);
 	cout << rank[0].getAirportIATACode() << endl;
+	*/
 
 }
 

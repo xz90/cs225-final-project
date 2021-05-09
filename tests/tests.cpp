@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <iostream>
 
 #include "../catch/catch.hpp"
 #include "../readFromFile.hpp"
@@ -81,7 +82,64 @@ TEST_CASE("Verify that file_to_vector works on a small example") {
 
 
 // TEST CASE FOR GRAPH CLASS
+TEST_CASE("Graph Test") {
+	unsigned idA = 0;
+	unsigned idB = 1;
+	unsigned idC = 2;
+	unsigned idD = 3;
+	unsigned idE = 4;
+	Airport sampleA(idA, "test1", "A", 1.1, 2.2 ,"Champaign", "USA", 0);
+	Airport sampleB(idB, "test1", "B", 1.0, 2.2 ,"Chicago", "USA", 0);
+	Airport sampleC(idC, "test1", "C", 1.0, 2.2 ,"New York", "USA", 0);
+	Airport sampleD(idD, "test1", "D", 1.0, 2.2 ,"Los Angeles", "USA", 0);
+	Airport sampleE(idE, "test1", "E", 1.0, 2.2 ,"Washington", "USA", 0);
+	vector<Airport> sampleAirportList;
+	sampleAirportList.push_back(sampleA);
+	sampleAirportList.push_back(sampleB);
+	sampleAirportList.push_back(sampleC);
+	sampleAirportList.push_back(sampleD);
+	sampleAirportList.push_back(sampleE);
+	Route sampleRouteAB("routeAB", sampleA, sampleB, 0);
+	Route sampleRouteAC("routeAC", sampleA, sampleC, 0);
+	Route sampleRouteAD("routeAD", sampleA, sampleD, 0);
+	Route sampleRouteBA("routeBA", sampleB, sampleA, 0);
+	Route sampleRouteBD("routeBD", sampleB, sampleD, 0);
+	Route sampleRouteCA("routeCA", sampleC, sampleA, 0);
+	Route sampleRouteDB("routeDB", sampleD, sampleB, 0);
+	vector<Route> sampleRouteList;
+	sampleRouteList.push_back(sampleRouteAB);
+	sampleRouteList.push_back(sampleRouteAC);
+	sampleRouteList.push_back(sampleRouteAD);
+	sampleRouteList.push_back(sampleRouteBA);
+	sampleRouteList.push_back(sampleRouteBD);
+	sampleRouteList.push_back(sampleRouteCA);
+	sampleRouteList.push_back(sampleRouteDB);
+	Graph sampleGraph(sampleAirportList, sampleRouteList);
+	SUCCEED();
 
+	SECTION("Graph Constructor test"){
+		REQUIRE(sampleGraph.get_num_airports() == 5);
+
+		// rank matrix
+		REQUIRE(sampleGraph.get_rank_matrix()[0][1] == 1);
+		REQUIRE(sampleGraph.get_rank_matrix()[1][0] == 1);
+		REQUIRE(sampleGraph.get_rank_matrix()[3][0] == 0);
+
+		// adj matrix
+		REQUIRE(sampleGraph.get_adj_matrix()[0][1] == 1);
+		REQUIRE(sampleGraph.get_adj_matrix()[3][0] == 1);
+	}
+
+	SECTION("Adj Airport Test"){
+		vector<Airport> adj_airport = sampleGraph.get_adj_airport(sampleA);
+		REQUIRE(std::find(adj_airport.begin(), adj_airport.end(), sampleB) != adj_airport.end());
+		REQUIRE(std::find(adj_airport.begin(), adj_airport.end(), sampleC) != adj_airport.end());
+		REQUIRE(std::find(adj_airport.begin(), adj_airport.end(), sampleD) != adj_airport.end());
+	}
+
+}
+
+// END TEST CASE FOR GRAPH CLASS
 
 // TEST CASE FOR PAGERANK
 TEST_CASE("Graph Constructor for PageRank") {
@@ -90,11 +148,11 @@ TEST_CASE("Graph Constructor for PageRank") {
 	unsigned idC = 2;
 	unsigned idD = 3;
 	unsigned idE = 4;
-	Airport sampleA(idA, "test1", "TESTONE", 1.1, 2.2 ,"Champaign", "USA", 0);
-	Airport sampleB(idB, "test1", "TESTONE", 1.0, 2.2 ,"Chicago", "USA", 0);
-	Airport sampleC(idC, "test1", "TESTONE", 1.0, 2.2 ,"New York", "USA", 0);
-	Airport sampleD(idD, "test1", "TESTONE", 1.0, 2.2 ,"Los Angeles", "USA", 0);
-	Airport sampleE(idE, "test1", "TESTONE", 1.0, 2.2 ,"Washington", "USA", 0);
+	Airport sampleA(idA, "test1", "A", 1.1, 2.2 ,"Champaign", "USA", 0);
+	Airport sampleB(idB, "test1", "B", 1.0, 2.2 ,"Chicago", "USA", 0);
+	Airport sampleC(idC, "test1", "C", 1.0, 2.2 ,"New York", "USA", 0);
+	Airport sampleD(idD, "test1", "D", 1.0, 2.2 ,"Los Angeles", "USA", 0);
+	Airport sampleE(idE, "test1", "E", 1.0, 2.2 ,"Washington", "USA", 0);
 	vector<Airport> sampleAirportList;
 	sampleAirportList.push_back(sampleA);
 	sampleAirportList.push_back(sampleB);
@@ -145,6 +203,15 @@ TEST_CASE("Graph Constructor for PageRank") {
 		pagerank.ModifyRankMatrix(sampleGraph);
 		REQUIRE(sampleGraph.get_rank_matrix()[4][0] == 0.2);
 	}
+
+	/*
+	SECTION("Pagerank rank test"){
+		vector<Airport> rank = pagerank.rank_airport(sampleGraph);
+		REQUIRE(rank[0] == sampleB);
+	}
+	*/
+	
+	
 	
 	
 }

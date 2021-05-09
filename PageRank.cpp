@@ -52,7 +52,8 @@ vector<double> PageRank::Calculate(Graph & graph) {
             result[i] = sum;
         }
 
-        if (abs(result[0] - lastValue) < 0.000001) {
+        // Check
+        if (abs(result[0] - lastValue) < 0.00000001) {
             break;
         }
     }
@@ -60,7 +61,7 @@ vector<double> PageRank::Calculate(Graph & graph) {
     return result;
 }
 
-vector<Airport> PageRank::rank_airport(Graph graph) {
+vector<Airport> PageRank::rank_airport(Graph & graph) {
     // Modify the rank matrix of the graph
     // ModifyRankMatrix(graph);
     // double** matrix = graph.get_rank_matrix();
@@ -76,7 +77,7 @@ vector<Airport> PageRank::rank_airport(Graph graph) {
         // Find the maximum_element index in x_stationary
         // Reference: https://stackoverflow.com/questions/2953491/finding-the-position-of-the-max-element
         int max_index = distance(x_stationary.begin(), max_element(x_stationary.begin(), x_stationary.end()));
-        cout << max_index << endl;
+        // cout << max_index << endl;
 
         // The importance of the airports base on the value of x_stationary
         // Push the corresponding airports with max_index in the rank
@@ -90,7 +91,7 @@ vector<Airport> PageRank::rank_airport(Graph graph) {
     
 }
 
-void PageRank::print_rank(Graph graph) {
+void PageRank::print_rank(Graph & graph) {
     vector<Airport> rank = rank_airport(graph);
     for (size_t i = 0; i < rank.size(); i++) {
         cout << i+1 << ":" << rank[i].getAirportIATACode() << endl;
