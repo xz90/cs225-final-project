@@ -4,6 +4,7 @@
 #include "Route.h"
 #include "Graph.h"
 #include "BFS.h"
+#include "Dijkstra.h"
 
 using namespace std;
 
@@ -54,7 +55,7 @@ int main() {
 
 	vector<Airport> airports;
 	std::vector<std::string> airportRepr = file_to_vector("airports.dat.txt");
-	for (unsigned i = 1; i < 7699; ++i) { //7699
+	for (unsigned i = 1; i < 2180; ++i) { //TOTAL:7699 .. 2179
 		std::vector<std::string> airportOut;
 		size_t n = std::count(airportRepr[i].begin(), airportRepr[i].end(), ',');
 		if (n == 13) {	// to check if the data satisfy our required format
@@ -89,8 +90,12 @@ int main() {
 	/*for (unsigned i = 0; i < routes.size(); ++i) {
 		std::cout << routes[i].getSourceAirport().getAirportIATACode() << std::endl;
 	}*/
+	// 3 4 connected
 	Graph graph(airports, routes);
-
+	cout << "Our source airport is " << airports[3].getAirportIATACode() << endl;
+	Dijkstra dijkstra(graph, airports[3]);
+	cout << "Our destination airport is " << airports[1].getAirportIATACode() << endl;
+	cout << "Shortest distance between them is " << dijkstra.shortest_distance(airports[1]) << endl;
 	/*
 	vector<Airport> out = graph.get_airports();
 	for (unsigned i = 0; i < out.size(); ++i) {

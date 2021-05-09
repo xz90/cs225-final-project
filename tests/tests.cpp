@@ -7,6 +7,7 @@
 #include "../Route.h"
 #include "../Graph.h"
 #include "../PageRank.h"
+#include "../Dijkstra.h"
 
 // TEST CASES FOR AIRPORT CLASS
 TEST_CASE("Airport Constructor") {
@@ -148,3 +149,45 @@ TEST_CASE("Graph Constructor for PageRank") {
 	
 }
 // END TEST CASE FOR PAGERANK
+
+TEST_CASE("Dijkstra's algorithm") {
+	unsigned idA = 0;
+	unsigned idB = 1;
+	unsigned idC = 2;
+	unsigned idD = 3;
+	unsigned idE = 4;
+	Airport sampleA(idA, "test1", "TESTONE", 1.0, 1.0 ,"Champaign", "USA", 0);
+	Airport sampleB(idB, "test1", "TESTONE", 1.0, 2.0 ,"Chicago", "USA", 0);
+	Airport sampleC(idC, "test1", "TESTONE", 1.0, 4.0 ,"New York", "USA", 0);
+	Airport sampleD(idD, "test1", "TESTONE", 1.0, 8.0 ,"Los Angeles", "USA", 0);
+	Airport sampleE(idE, "test1", "TESTONE", 1.0, 16.0 ,"Washington", "USA", 0);
+	vector<Airport> sampleAirportList;
+	sampleAirportList.push_back(sampleA);
+	sampleAirportList.push_back(sampleB);
+	sampleAirportList.push_back(sampleC);
+	sampleAirportList.push_back(sampleD);
+	sampleAirportList.push_back(sampleE);
+	Route sampleRouteAB("routeAB", sampleA, sampleB, 0);
+	Route sampleRouteAC("routeAC", sampleA, sampleC, 0);
+	Route sampleRouteAD("routeAD", sampleA, sampleD, 0);
+	Route sampleRouteBA("routeBA", sampleB, sampleA, 0);
+	Route sampleRouteBD("routeBD", sampleB, sampleD, 0);
+	Route sampleRouteCA("routeCA", sampleC, sampleA, 0);
+	Route sampleRouteDB("routeDB", sampleD, sampleB, 0);
+	vector<Route> sampleRouteList;
+	sampleRouteList.push_back(sampleRouteAB);
+	sampleRouteList.push_back(sampleRouteAC);
+	sampleRouteList.push_back(sampleRouteAD);
+	sampleRouteList.push_back(sampleRouteBA);
+	sampleRouteList.push_back(sampleRouteBD);
+	sampleRouteList.push_back(sampleRouteCA);
+	sampleRouteList.push_back(sampleRouteDB);
+	Graph sampleGraph(sampleAirportList, sampleRouteList);
+	Dijkstra dijkstra(sampleGraph, sampleA);
+	SUCCEED();
+	REQUIRE(dijkstra.shortest_distance(sampleA) == 0);
+	REQUIRE(dijkstra.shortest_distance(sampleB) == sampleRouteAB.getDistance());
+	REQUIRE(dijkstra.shortest_distance(sampleC) == sampleRouteAC.getDistance());
+	REQUIRE(dijkstra.shortest_distance(sampleE) == numeric_limits<double>::infinity());
+	REQUIRE(dijkstra.shortest_distance(sampleD) == min(sampleRouteAB.getDistance() + sampleRouteBD.getDistance(), sampleRouteAD.getDistance()));
+}
