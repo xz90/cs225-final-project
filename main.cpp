@@ -153,10 +153,30 @@ int main() {
 	
 	// Dijkstra
 	// 3 4 connected
-	cout << "Our source airport is " << airports[0].getAirportIATACode() << endl;
-	Dijkstra dijkstra(graph, airports[0]);
-	cout << "Our destination airport is " << airports[1].getAirportIATACode() << endl;
-	cout << "Shortest distance between them is " << dijkstra.shortest_distance(airports[1]) << endl;
+	// BEJ 3364 ORD 3830 GKA1
+	unsigned s;
+    for (s = 0; s < airports.size(); ++s) {
+        if (airports[s].getAirportID() == 3364) {
+            break;
+        }
+    }
+
+	unsigned d;
+	for (d = 0; d < airports.size(); ++d) {
+        if (airports[d].getAirportID() == 1) {
+            break;
+        }
+    }
+
+	cout << "Our source airport is " << airports[s].getAirportIATACode() << endl;
+	Dijkstra dijkstra(graph, airports[s]);
+	cout << "Our destination airport is " << airports[d].getAirportIATACode() << endl;
+	cout << "Shortest distance between them is " << dijkstra.shortest_distance(airports[d]) << endl;
+	cout << "The shortest path between them is" << endl;
+	vector<Airport> shortest_path_id = dijkstra.shortest_path(airports[d]);
+	for (unsigned i = 0; i < shortest_path_id.size(); ++i) {
+		cout << shortest_path_id[i].getAirportIATACode()<< endl;
+	}
 }
 
 		

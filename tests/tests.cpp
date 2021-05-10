@@ -254,10 +254,17 @@ TEST_CASE("Dijkstra's algorithm") {
 	Graph sampleGraph(sampleAirportList, sampleRouteList);
 	Dijkstra dijkstra(sampleGraph, sampleA);
 	SUCCEED();
-	REQUIRE(dijkstra.shortest_distance(sampleA) == 0);
-	REQUIRE(dijkstra.shortest_distance(sampleB) == sampleRouteAB.getDistance());
-	REQUIRE(dijkstra.shortest_distance(sampleC) == sampleRouteAC.getDistance());
-	REQUIRE(dijkstra.shortest_distance(sampleE) == numeric_limits<double>::infinity());
-	//REQUIRE(dijkstra.shortest_distance(sampleE) == sampleRouteAC.getDistance()+sampleRouteEC.getDistance());
-	REQUIRE(dijkstra.shortest_distance(sampleD) == min(sampleRouteAB.getDistance() + sampleRouteBD.getDistance(), sampleRouteAD.getDistance()));
+	SECTION("Shortest distance"){
+		REQUIRE(dijkstra.shortest_distance(sampleA) == 0);
+		REQUIRE(dijkstra.shortest_distance(sampleB) == sampleRouteAB.getDistance());
+		REQUIRE(dijkstra.shortest_distance(sampleC) == sampleRouteAC.getDistance());
+		REQUIRE(dijkstra.shortest_distance(sampleE) == numeric_limits<double>::infinity());
+		REQUIRE(dijkstra.shortest_distance(sampleD) == min(sampleRouteAB.getDistance() + sampleRouteBD.getDistance(), sampleRouteAD.getDistance()));
+	}
+	SECTION("Shortest path"){
+		vector<Airport> shortestSol;
+		shortestSol.push_back(sampleA);
+		shortestSol.push_back(sampleD);
+		REQUIRE(dijkstra.shortest_path(sampleD) == shortestSol);
+	}
 }

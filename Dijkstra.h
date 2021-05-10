@@ -12,6 +12,7 @@ class Dijkstra{
     public:
     Dijkstra(Graph graph, Airport source_airport);
     double shortest_distance(Airport destination_airport);
+    vector<Airport> shortest_path(Airport destination_airport);
     //Dijkstra(Graph graph, Airport source_airport, Airport destination_airport);
     private:
     vector<Airport> airport_;

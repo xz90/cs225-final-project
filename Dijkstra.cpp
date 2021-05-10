@@ -84,6 +84,51 @@ double Dijkstra::shortest_distance(Airport destination_airport) {
 }
 
 
+vector<Airport> Dijkstra::shortest_path(Airport desti)
+{
+    // Our input will be the starting IATA node and destination IATA node.
+    // Our output should be the shortest route between these cities' airports with the
+    // shortest number of connections.
+    // map<unsigned, unsigned> previous_;
+
+
+    unsigned destiID = desti.getAirportID();
+    std::vector<unsigned> solution;
+    unsigned curID = destiID;
+
+    while (curID != 99999)
+    {
+        map<unsigned, unsigned>::iterator lookup = previous_.find(curID);
+        if (lookup == previous_.end() || 
+        distance_[curID] == numeric_limits<double>::infinity())
+        {
+            solution = vector<unsigned> ();
+            break;
+        }
+        unsigned prevID = previous_[curID]; 
+        solution.push_back(prevID);
+        curID = prevID;
+    }
+    reverse(solution.begin(), solution.end());
+    //cout << "1st" << solution.size() << endl;
+    vector<Airport> output;
+    for (unsigned i = 0; i < solution.size(); ++i) {
+        //cout << i << "time" << endl;
+        unsigned j;
+        for (j = 0; j < airport_.size(); ++j) {
+            if (airport_[j].getAirportID() == solution[i] || airport_[j].getAirportID() == 99999) {
+                output.push_back(airport_[j]);
+                break;
+            }
+        }
+    }
+    //cout << "2nd" << output.size() << endl;
+    output.push_back(desti);
+    return output;
+}
+
+
+
 
 // Dijkstra::Dijkstra(Graph graph, Airport source_airport) {
 //     //graph_ = graph;
