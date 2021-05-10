@@ -39,6 +39,9 @@ Dijkstra::Dijkstra(Graph graph, Airport source_airport) {
         //cout << "This is the " << ++counter << "th time enter the loop" << endl;
         auto u = Q.top();
         Q.pop();
+        // It is important to check whether u has been visited
+        auto visited_it = find(visited_.begin(), visited_.end(), u.first);
+        if (visited_it != visited_.end()) continue;
         visited_.push_back(u.first);
         //for each neighbors of u not in visited;
         unsigned j;
@@ -61,7 +64,6 @@ Dijkstra::Dijkstra(Graph graph, Airport source_airport) {
                             previous_[adj_airport[v].getAirportID()] = u.first;
                         }
                         //cout << res.getDestinationAirport().getAirportIATACode() << endl;
-                        visited_.push_back(adj_airport[v].getAirportID());
                         Q.push(make_pair(adj_airport[v].getAirportID(), distance_[adj_airport[v].getAirportID()]));
                         break;
                     }
