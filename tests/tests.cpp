@@ -241,6 +241,7 @@ TEST_CASE("Dijkstra's algorithm") {
 	Route sampleRouteBD("routeBD", sampleB, sampleD, 0);
 	Route sampleRouteCA("routeCA", sampleC, sampleA, 0);
 	Route sampleRouteDB("routeDB", sampleD, sampleB, 0);
+	Route sampleRouteEC("routeEC", sampleE, sampleC, 0);
 	vector<Route> sampleRouteList;
 	sampleRouteList.push_back(sampleRouteAB);
 	sampleRouteList.push_back(sampleRouteAC);
@@ -249,6 +250,7 @@ TEST_CASE("Dijkstra's algorithm") {
 	sampleRouteList.push_back(sampleRouteBD);
 	sampleRouteList.push_back(sampleRouteCA);
 	sampleRouteList.push_back(sampleRouteDB);
+	sampleRouteList.push_back(sampleRouteEC);
 	Graph sampleGraph(sampleAirportList, sampleRouteList);
 	Dijkstra dijkstra(sampleGraph, sampleA);
 	SUCCEED();
@@ -256,5 +258,6 @@ TEST_CASE("Dijkstra's algorithm") {
 	REQUIRE(dijkstra.shortest_distance(sampleB) == sampleRouteAB.getDistance());
 	REQUIRE(dijkstra.shortest_distance(sampleC) == sampleRouteAC.getDistance());
 	REQUIRE(dijkstra.shortest_distance(sampleE) == numeric_limits<double>::infinity());
+	//REQUIRE(dijkstra.shortest_distance(sampleE) == sampleRouteAC.getDistance()+sampleRouteEC.getDistance());
 	REQUIRE(dijkstra.shortest_distance(sampleD) == min(sampleRouteAB.getDistance() + sampleRouteBD.getDistance(), sampleRouteAD.getDistance()));
 }

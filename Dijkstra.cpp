@@ -33,9 +33,10 @@ Dijkstra::Dijkstra(Graph graph, Airport source_airport) {
 
     distance_[airport_[airportIdx].getAirportID()] = 0;
     Q.push(make_pair(airport_[airportIdx].getAirportID(), 0));
-
+    //int counter = 0;
     // u- unsigned double
     while(!Q.empty()) {
+        //cout << "This is the " << ++counter << "th time enter the loop" << endl;
         auto u = Q.top();
         Q.pop();
         visited_.push_back(u.first);
@@ -44,6 +45,7 @@ Dijkstra::Dijkstra(Graph graph, Airport source_airport) {
         for (j = 0; j < airport_.size(); ++j) {
             if (airport_[j].getAirportID() == u.first) break;
         }
+        //cout << "The currect Airport is "<< airport_[j].getAirportIATACode() << endl;
         vector<Airport> adj_airport = graph.get_adj_airport(airport_[j]);
         for (unsigned v = 0; v < adj_airport.size(); ++v) {
             auto visited_it = find(visited_.begin(), visited_.end(), adj_airport[v].getAirportID());
@@ -58,14 +60,14 @@ Dijkstra::Dijkstra(Graph graph, Airport source_airport) {
                             distance_[adj_airport[v].getAirportID()] = distance_[u.first] + dist_u_v;
                             previous_[adj_airport[v].getAirportID()] = u.first;
                         }
-
+                        //cout << res.getDestinationAirport().getAirportIATACode() << endl;
+                        visited_.push_back(adj_airport[v].getAirportID());
                         Q.push(make_pair(adj_airport[v].getAirportID(), distance_[adj_airport[v].getAirportID()]));
                         break;
                     }
                 }
             }
         }
-        //cout << "Hello" << endl;
     }
 }
 

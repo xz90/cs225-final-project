@@ -56,7 +56,7 @@ int main() {
 
 	vector<Airport> airports;
 	std::vector<std::string> airportRepr = file_to_vector("airports.dat.txt");
-	for (unsigned i = 1; i < 2179; ++i) { //TOTAL:7699 .. 2179
+	for (unsigned i = 1; i < 7699; ++i) { //TOTAL:7699 .. 2179
 		std::vector<std::string> airportOut;
 		size_t n = std::count(airportRepr[i].begin(), airportRepr[i].end(), ',');
 		if (n == 13) {	// to check if the data satisfy our required format
@@ -144,16 +144,17 @@ int main() {
 	*/
 
 	// PageRank
-	PageRank pagerank;
+	/*PageRank pagerank;
 	vector<double> x = pagerank.Calculate(graph);
 
 	vector<Airport> rank = pagerank.rank_airport(graph);
 	// cout << rank[0].getAirportIATACode() << endl;
-	pagerank.print_rank(graph);
+	pagerank.print_rank(graph);*/
 	
-		// 3 4 connected
-	cout << "Our source airport is " << airports[3].getAirportIATACode() << endl;
-	Dijkstra dijkstra(graph, airports[3]);
+	// Dijkstra
+	// 3 4 connected
+	cout << "Our source airport is " << airports[0].getAirportIATACode() << endl;
+	Dijkstra dijkstra(graph, airports[0]);
 	cout << "Our destination airport is " << airports[1].getAirportIATACode() << endl;
 	cout << "Shortest distance between them is " << dijkstra.shortest_distance(airports[1]) << endl;
 }
