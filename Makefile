@@ -46,8 +46,8 @@ PageRank.o: PageRank.cpp
 Dijkstra.o: Dijkstra.cpp
 	$(CXX) $(CXXFLAGS) Dijkstra.cpp
 
-test: output_msg catch/catchmain.cpp tests/tests.cpp readFromFile.cpp Airport.cpp Route.cpp Graph.cpp PageRank.cpp Dijkstra.cpp
-	$(LD) catch/catchmain.cpp tests/tests.cpp readFromFile.cpp Airport.cpp Route.cpp Graph.cpp PageRank.cpp Dijkstra.cpp $(LDFLAGS) -o test
+test: output_msg catch/catchmain.cpp tests/tests.cpp readFromFile.cpp Airport.cpp Route.cpp Graph.cpp PageRank.cpp Dijkstra.cpp BFS.cpp
+	$(LD) catch/catchmain.cpp tests/tests.cpp readFromFile.cpp Airport.cpp Route.cpp Graph.cpp PageRank.cpp Dijkstra.cpp BFS.cpp $(LDFLAGS) -o test
 
 clean:
 	-rm -f *.o $(EXENAME) test

@@ -7,6 +7,7 @@
 #include "../Airport.h"
 #include "../Route.h"
 #include "../Graph.h"
+#include "../BFS.h"
 #include "../PageRank.h"
 #include "../Dijkstra.h"
 
@@ -81,7 +82,7 @@ TEST_CASE("Verify that file_to_vector works on a small example") {
 }		
 
 
-// TEST CASE FOR GRAPH CLASS
+// TEST CASE FOR GRAPH CLASS AND BFS
 TEST_CASE("Graph Test") {
 	unsigned idA = 0;
 	unsigned idB = 1;
@@ -137,9 +138,23 @@ TEST_CASE("Graph Test") {
 		REQUIRE(std::find(adj_airport.begin(), adj_airport.end(), sampleD) != adj_airport.end());
 	}
 
+	SECTION("BFS"){
+		BFS bfs;
+		vector<Airport> sampleBFS = bfs.traversal(sampleGraph, sampleA);
+		REQUIRE(sampleBFS.size() == 4);
+		REQUIRE(sampleBFS[0].getAirportIATACode() == "A");
+		REQUIRE(sampleBFS[1].getAirportIATACode() == "B");
+		REQUIRE(sampleBFS[2].getAirportIATACode() == "C");
+		REQUIRE(sampleBFS[3].getAirportIATACode() == "D");
+		vector<Airport> sampleBFS2 = bfs.traversal(sampleGraph, sampleE);
+		REQUIRE(sampleBFS2.size() == 1);
+		REQUIRE(sampleBFS2[0].getAirportIATACode() == "E");
+	}
+
 }
 
-// END TEST CASE FOR GRAPH CLASS
+// END TEST CASE FOR GRAPH CLASS AND BFS
+
 
 // TEST CASE FOR PAGERANK
 TEST_CASE("Graph Constructor for PageRank") {
