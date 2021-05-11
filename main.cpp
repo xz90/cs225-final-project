@@ -130,9 +130,27 @@ int main() {
 
 	// BFS
 
-	/*
+	unsigned start;
+	do {
+		cout << "Now it is the BFS algoritm " << endl;
+		cout << "Please type in the airport's IATA code that you want to start with" << endl;
+		string source_in;
+		cin >> source_in;
+		source_in = "\""+source_in+"\"";
+		cout << "Your starting airport is " << source_in << endl;
+		for (start = 0; start < airports.size(); ++start) {
+			if (airports[start].getAirportIATACode() == source_in) {
+				break;
+			}
+		}
+		if (start == airports.size()) {
+			cout << "Your input IATA code for the starting airport is not correct" << endl;
+			cout << "Please try it again" << endl;
+		}
+	} while (start == airports.size());
+
 	BFS bfs;
-	vector<Airport> out = bfs.traversal(graph, airports[4]);
+	vector<Airport> out = bfs.traversal(graph, airports[start]);
 	cout << out.size() << endl;
 
 	cout << "BFS:" << endl;
@@ -141,32 +159,62 @@ int main() {
 	}
 
 	cout << out.size() << endl;
-	*/
+	
 
 	// PageRank
-	/*PageRank pagerank;
+	cout << "Now it is the PageRank algoritm " << endl;
+	cout << "Press any keys to continue" << endl;
+	string page;
+	cin >> page;
+	cout << "Please wait for a second" << endl;
+	PageRank pagerank;
 	vector<double> x = pagerank.Calculate(graph);
 
 	vector<Airport> rank = pagerank.rank_airport(graph);
 	// cout << rank[0].getAirportIATACode() << endl;
-	pagerank.print_rank(graph);*/
+	pagerank.print_rank(graph);
 	
 	// Dijkstra
 	// 3 4 connected
 	// BEJ 3364 ORD 3830 GKA1
-	unsigned s;
-    for (s = 0; s < airports.size(); ++s) {
-        if (airports[s].getAirportID() == 3364) {
-            break;
-        }
-    }
+	unsigned s, d;
+	do {
+		cout << "Now it is the Dijkstra algoritm " << endl;
+		cout << "Please enter the source airport you wanted to search" << endl;
+		string source_d;
+		cin >> source_d;
+		source_d = "\""+source_d+"\"";
+		
+		for (s = 0; s < airports.size(); ++s) {
+			if (airports[s].getAirportIATACode() == source_d) {
+				break;
+			}
+		}
 
-	unsigned d;
-	for (d = 0; d < airports.size(); ++d) {
-        if (airports[d].getAirportID() == 1) {
-            break;
-        }
-    }
+		cout << "Please enter the destination airport you wanted to search" << endl;
+		string dest_d;
+		cin >> dest_d;
+		dest_d = "\""+dest_d+"\"";
+		
+		for (d = 0; d < airports.size(); ++d) {
+			if (airports[d].getAirportIATACode() == dest_d) {
+				break;
+			}
+		}
+
+		if ( s == airports.size() ) {
+			cout << "Your input IATA code for source airport is not correct" << endl;
+			cout << "Please try it again" << endl;
+		}
+		
+		if ( d == airports.size() ) {
+			cout << "Your input IATA code for destination airport is not correct" << endl;
+			cout << "Please try it again" << endl;
+		}
+
+	} while ( (s == airports.size()) || (d == airports.size()) );
+
+	cout << "Please wait for a second" << endl;
 
 	cout << "Our source airport is " << airports[s].getAirportIATACode() << endl;
 	Dijkstra dijkstra(graph, airports[s]);
