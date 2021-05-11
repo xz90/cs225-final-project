@@ -16,3 +16,15 @@ Assign tasks to finish the Airport clss, Route class, and Graph class, which are
 
 Next: finish the BFS traversal. 
 Recorder: baoyul2
+
+
+**April 23th**
+
+Finished the Airport class, Route class, and Graph class. Also finidhed the test cases for these class.
+We tried to write the BFS algorithm but some bug still exists.
+
+Next: find the bug existing in BFS algorithm. Also assign the tasks of Dijkstra algorithm and PageRank algorithm.
+
+Recorder: zikuiw2
+
+
