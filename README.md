@@ -10,7 +10,7 @@ The “**ReadFromFile**” file is used to transform the data in txt file into s
 The **tests** file stores our test for all the algorithms and functions. 
 
 ##### (2) Full instructions on how to build and run your executable, including how to define the input data and output location for each method. 
-The way to build our executable is to type in `make` in our repository. Then we will obtain our executable `finalproj`. To run our executable, we just need to type in the code `.\finalproj`
+The way to build our executable is to type in `make` in our repository. Then we will obtain our executable `finalproj`. To run our executable, we just need to type in the code `./finalproj`
 1. After succesfully execute our executable, please wait for a second for processing data.
 2. Then the command line will pop out our first algorithm: ***BFS algorithm*** . Just typing in one random airport's IATA code (in uppercases letter), e.g. `ORD`, as the starting point of BFS algorithm. If the input is not listed in our data set, it will be required to retype it. Then wait a second and the result of such BFS traversal will show in the command line.
 3. After popping out the result, the command line will then show we entered the executation of ***PageRank algorithm***. Typing into anything to execute the PageRank algorithm. It will correctly show our pagerank result.
