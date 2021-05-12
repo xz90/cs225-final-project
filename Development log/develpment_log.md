@@ -28,3 +28,19 @@ Next: find the bug existing in BFS algorithm. Also assign the tasks 
 Recorder: zikuiw2
 
 
+**April 27(Tuesday)**
+
+We organized a zoom meeting for cooperation. 
+
+First, we check the previous code we wrote before and solve the problem in the BFS. 
+The problem with the code I wrote before is: 
+I use the id of each airport to represent each airport. 
+However, when we use a limited number of airports to test, the vector will be out of bound.
+
+Therefore, we changed to use iterator to represent the index of airport. This can solve the problem of out of bound.
+
+Then, we decided that our next job is to complete the test cases of both Graph and BFS.
+
+***Note: this log was originally committed in a different file (Development_log2.md in our repo), this log then was copied into here. ***
+
+Recorder: sxxiao2
