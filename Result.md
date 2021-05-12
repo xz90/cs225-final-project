@@ -7,6 +7,7 @@ We have successfully implemented Traversals(BFS), Dijkstra’s, and PageRank Alg
 <br />
 ---
 <br />
+
 First, we test our **BFS algorithm**. A sentence in the terminal says to start testing BFS, and then we need to enter an airport's IATA code. Then we can get all the airports that this airport can go to. We also can get the number of airports it can reach.
 
 From example, we I type in “TSL” as the airport’s IATA code, the output will be:
@@ -22,6 +23,7 @@ This means the airport TSL has no place to go except itself.
 <br />
 ---
 <br />
+
 Next, we test our **PageRank algorithm**. We can type in anything we want to run this test. It will pop out the ranking of all airports, and each airport is represented by its IATA code. If there is no corresponding IATA code for that airport, it will display \N. The smaller the number, the higher the ranking of the airport. 
 I only show a few airports’ ranking displayed in the terminal:
 
@@ -43,6 +45,7 @@ Please wait for a second<br />
 <br />
 ---
 <br />
+
 Finally, we test our **Dijkstra algorithm**. We enter the IATA code of the source point, followed by the IATA code of the destination airport. According to the shortest route between these two points, all airports in the shortest route will be displayed in the terminal.
 
 For example, when I try to get the shortest path between STL and GSJ. There is no path between them.
@@ -59,7 +62,7 @@ Our source airport is "STL"<br />
 Our destination airport is "GSJ"<br />
 There is no path between them.<br />
 
-Let’s test something else. When I try to test the shortest path between BFS and ORD. This will show up in the terminal:
+_Let’s test something else. When I try to test the shortest path between BFS and ORD. This will show up in the terminal:_
 
 Now it is the Dijkstra algoritm <br />
 Please enter the source airport you wanted to search<br />
