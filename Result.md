@@ -6,6 +6,7 @@ We have successfully implemented Traversals(BFS), Dijkstra’s, and PageRank Alg
 
 <br />
 ---
+<br />
 First, we test our **BFS algorithm**. A sentence in the terminal says to start testing BFS, and then we need to enter an airport's IATA code. Then we can get all the airports that this airport can go to. We also can get the number of airports it can reach.
 
 From example, we I type in “TSL” as the airport’s IATA code, the output will be:
